@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from src.instructions import INSTRUCTION_SET
+from src.codec import INSTRUCTION_SIZE, encode_program
 
 MIN_OPERAND_VALUE = 0
 FIELD_NAMES = "ABCD"
@@ -76,14 +77,17 @@ def translate_program(program):
     ]
 
 def print_test_result(program):
-    """Вывести поля команд и их значения."""
-    for instruction in program:
-        fields = [
-            f"{name}={value}"
-            for name, value in zip(FIELD_NAMES, instruction)
-        ]
+    """Вывести машинный код в шестнадцатеричном формате."""
+    for start in range(0, len(program), INSTRUCTION_SIZE):
+        instruction = program[start:start + INSTRUCTION_SIZE]
+
+        fields = [f"0x{byte:02X}" for byte in instruction]
 
         print(", ".join(fields))
+
+def write_binary(path, program):
+    """Записать машинный код в бинарный файл."""
+    path.write_bytes(program)
 
 def main():
     """Выполнить ассемблирование исходной программы."""
@@ -92,9 +96,14 @@ def main():
     try:
         program = read_program(args.input)
         translated = translate_program(program)
+        encoded = encode_program(translated)
+
+        write_binary(args.output, encoded)
+
+        print(f"Количество команд: {len(translated)}")
 
         if args.test_mode:
-            print_test_result(translated)
+            print_test_result(encoded)
 
     except (OSError, ValueError) as error:
         print(f"Ошибка: {error}", file=sys.stderr)
