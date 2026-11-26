@@ -1,0 +1,23 @@
+[
+    {
+        "op": "LOAD_CONST",
+        "register": 98,
+        "value": 817
+    },
+    {
+        "op": "READ",
+        "base_register": 4,
+        "target_register": 122,
+        "offset": 342
+    },
+    {
+        "op": "WRITE",
+        "register": 114,
+        "address": 279
+    },
+    {
+        "op": "ADD",
+        "address_register": 10,
+        "target_register": 63
+    }
+]
