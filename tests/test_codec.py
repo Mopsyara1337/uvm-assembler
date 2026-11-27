@@ -1,7 +1,11 @@
 """Тестирование кодирования команд УВМ."""
 
 import unittest
-from src.codec import encode_instruction, encode_program
+from src.codec import (
+    encode_instruction,
+    encode_program,
+    decode_instruction,
+)
 
 
 class TestCodec(unittest.TestCase):
@@ -70,6 +74,48 @@ class TestCodec(unittest.TestCase):
         result = encode_program(instruction)
         expected = b""
         self.assertEqual(result, expected)
+
+    def test_decode_load_const(self):
+        """Проверить декодирование загрузки константы."""
+        instruction = bytes.fromhex("BB 38 66 00 00 00")
+        self.assertEqual(
+            decode_instruction(instruction), (59, 98, 817)
+        )
+
+    def test_decode_read(self):
+        """Проверить декодирование чтения из памяти."""
+        instruction = bytes.fromhex("3C 41 6F 15 00 00")
+        self.assertEqual(
+            decode_instruction(instruction), (60, 4, 122, 342)
+        )
+
+    def test_decode_write(self):
+        """Проверить декодирование записи в память."""
+        instruction = bytes.fromhex("AB FC 22 00 00 00")
+        self.assertEqual(
+            decode_instruction(instruction), (43, 114, 279)
+        )
+
+    def test_decode_add(self):
+        """Проверить декодирование сложения."""
+        instruction = bytes.fromhex("9E E2 07 00 00 00")
+        self.assertEqual(
+            decode_instruction(instruction), (30, 10, 63)
+        )
+
+    def test_invalid_instruction_size(self):
+        """Проверить некорректный размер команды."""
+        instruction = bytes(5)
+
+        with self.assertRaises(ValueError):
+            decode_instruction(instruction)
+
+    def test_unknown_opcode(self):
+        """Проверить неизвестный код операции."""
+        instruction = bytes(6)
+
+        with self.assertRaises(ValueError):
+            decode_instruction(instruction)
 
 
 if __name__ == "__main__":
