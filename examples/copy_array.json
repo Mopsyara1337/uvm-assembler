@@ -1,0 +1,70 @@
+[
+  {
+    "op": "LOAD_CONST",
+    "register": 0,
+    "value": 15
+  },
+  {
+    "op": "WRITE",
+    "register": 0,
+    "address": 100
+  },
+  {
+    "op": "LOAD_CONST",
+    "register": 0,
+    "value": 25
+  },
+  {
+    "op": "WRITE",
+    "register": 0,
+    "address": 101
+  },
+  {
+    "op": "LOAD_CONST",
+    "register": 0,
+    "value": 35
+  },
+  {
+    "op": "WRITE",
+    "register": 0,
+    "address": 102
+  },
+  {
+    "op": "LOAD_CONST",
+    "register": 1,
+    "value": 100
+  },
+  {
+    "op": "READ",
+    "base_register": 1,
+    "target_register": 2,
+    "offset": 0
+  },
+  {
+    "op": "WRITE",
+    "register": 2,
+    "address": 200
+  },
+  {
+    "op": "READ",
+    "base_register": 1,
+    "target_register": 2,
+    "offset": 1
+  },
+  {
+    "op": "WRITE",
+    "register": 2,
+    "address": 201
+  },
+  {
+    "op": "READ",
+    "base_register": 1,
+    "target_register": 2,
+    "offset": 2
+  },
+  {
+    "op": "WRITE",
+    "register": 2,
+    "address": 202
+  }
+]

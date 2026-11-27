@@ -14,11 +14,11 @@ def get_specification(opcode):
 
 def encode_instruction(instruction):
     """Преобразовать команду в машинный код."""
-    comm = get_specification(instruction[0])
+    specification = get_specification(instruction[0])
     result = instruction[0]
     shift = OPCODE_BITS
     for value, (name, bits) in zip(
-            instruction[1:], comm["operands"]):
+            instruction[1:], specification["operands"]):
         result |= value << shift
         shift += bits
 
@@ -32,3 +32,27 @@ def encode_program(program):
     ]
 
     return b"".join(encoded)
+
+def decode_instruction(instruction):
+    """Декодировать машинную команду."""
+    if len(instruction) != INSTRUCTION_SIZE:
+        raise ValueError("Некорректный размер команды")
+
+    number = int.from_bytes(instruction, byteorder=BYTE_ORDER)
+    mask = (1 << OPCODE_BITS) - 1
+    opcode = number & mask
+    specification = get_specification(opcode)
+    result = [opcode]
+    shift = OPCODE_BITS
+
+    for _, bits in specification["operands"]:
+        mask = (1 << bits) - 1
+        result.append((number >> shift) & mask)
+        shift += bits
+
+    return tuple(result)
+
+
+
+
+
