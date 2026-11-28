@@ -1,0 +1,294 @@
+[
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 100
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 5
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 101
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 102
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 10
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 103
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 104
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 15
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 105
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 106
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 7
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 200
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 201
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 8
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 202
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 203
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 9
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 204
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 0
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 205
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 0,
+        "value": 10
+    },
+    {
+        "op": "WRITE",
+        "register": 0,
+        "address": 206
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 1,
+        "value": 100
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 0
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 200
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 300
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 1
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 201
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 301
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 2
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 202
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 302
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 3
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 203
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 303
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 4
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 204
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 304
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 5
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 205
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 305
+    },
+    {
+        "op": "READ",
+        "base_register": 1,
+        "target_register": 2,
+        "offset": 6
+    },
+    {
+        "op": "LOAD_CONST",
+        "register": 3,
+        "value": 206
+    },
+    {
+        "op": "ADD",
+        "address_register": 3,
+        "target_register": 2
+    },
+    {
+        "op": "WRITE",
+        "register": 2,
+        "address": 306
+    }
+]
