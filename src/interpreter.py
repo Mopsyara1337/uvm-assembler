@@ -27,6 +27,7 @@ class Interpreter:
             INSTRUCTION_SET["LOAD_CONST"]["opcode"]: self.execute_load_const,
             INSTRUCTION_SET["READ"]["opcode"]: self.execute_read,
             INSTRUCTION_SET["WRITE"]["opcode"]: self.execute_write,
+            INSTRUCTION_SET["ADD"]["opcode"]: self.execute_add,
         }
 
     def load_program(self, program):
@@ -66,6 +67,12 @@ class Interpreter:
             raise ValueError(f"Неподдерживаемая операция: {opcode}")
 
         operation(*operands)
+
+    def execute_add(self, address_register, target_register):
+        """Выполнить сложение значения регистра со значением из памяти."""
+        address = self.registers[address_register]
+        value = self.memory.read(address)
+        self.registers[target_register] += value
 
     def run(self):
         """Выполнить загруженную программу."""

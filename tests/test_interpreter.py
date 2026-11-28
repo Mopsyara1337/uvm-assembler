@@ -107,6 +107,53 @@ class TestInterpreter(unittest.TestCase):
         self.assertEqual(target, [15, 25, 35])
         self.assertEqual(self.interpreter.pc, 13)
 
+    def test_execute_add(self):
+        """Проверить сложение регистра со значением из памяти."""
+        self.interpreter.registers[2] = 100
+        self.interpreter.registers[4] = 15
+        self.interpreter.memory.write(100, 25)
+
+        self.interpreter.execute_add(2, 4)
+
+        self.assertEqual(self.interpreter.registers[4], 40)
+        self.assertEqual(self.interpreter.registers[2], 100)
+        self.assertEqual(self.interpreter.memory.read(100), 25)
+
+    def test_add_zero(self):
+        """Проверить сложение с нулём."""
+        self.interpreter.registers[2] = 100
+        self.interpreter.registers[4] = 15
+
+        self.interpreter.execute_add(2, 4)
+
+        self.assertEqual(self.interpreter.registers[4], 15)
+
+    def test_add_same_register(self):
+        """Проверить использование одного регистра для ADD."""
+        self.interpreter.registers[2] = 100
+        self.interpreter.memory.write(100, 25)
+
+        self.interpreter.execute_add(2, 2)
+
+        self.assertEqual(self.interpreter.registers[2], 125)
+
+    def test_addition_program(self):
+        """Проверить выполнение программы сложения."""
+        root = Path(__file__).resolve().parents[1]
+        path = root / "examples" / "addition.json"
+
+        program = read_program(path)
+        translated = translate_program(program)
+        encoded = encode_program(translated)
+
+        self.interpreter.load_program(encoded)
+        self.interpreter.run()
+
+        self.assertEqual(self.interpreter.registers[2], 40)
+        self.assertEqual(self.interpreter.memory.read(100), 25)
+        self.assertEqual(self.interpreter.memory.read(200), 40)
+        self.assertEqual(self.interpreter.pc, 6)
+
 
 if __name__ == "__main__":
     unittest.main()
